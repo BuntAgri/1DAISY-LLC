@@ -1,79 +1,187 @@
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>V.E. BATIMENT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1DAISY LLC — Modern Services</title>
+  <meta name="description" content="Minimal, airy website for 1DAISY LLC. Services, portfolio, and contact information. Call +1 775 248 1547." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #111827; line-height: 1.6; }
-    header, footer { background: #1f2937; color: white; text-align: center; padding: 30px; }
-    nav a { color: #fbbf24; margin: 0 12px; text-decoration: none; font-weight: 600; }
-    section { padding: 60px 20px; max-width: 1200px; margin: auto; text-align: center; }
-    h2 { color: #1f2937; margin-bottom: 20px; font-size: 2.4em; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .gallery img { width: 100%; border-radius: 8px; }
-    .contact-form input, .contact-form textarea {
-      width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;
+    :root{
+      --bg:#F5F7FB;          /* Minimal Clean palette */
+      --card:#ffffff;
+      --ink:#0B0F14;         /* deep text */
+      --muted:#6b7280;       /* muted grey */
+      --brand:#0EA5E9;       /* accent */
+      --dark:#111827;
+      --radius:18px;
+      --shadow:0 16px 36px rgba(0,0,0,.08);
+      --maxw:1200px;
     }
-    iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; margin-top: 20px; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    header{position:sticky; top:0; z-index:60; backdrop-filter:saturate(1.1) blur(10px); background:rgba(255,255,255,.9); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:900; letter-spacing:.2px; color:var(--brand)}
+    .logo{width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg,var(--brand),#67e8f9); display:grid; place-items:center; color:#06212a; font-weight:900; box-shadow:0 10px 24px rgba(14,165,233,.25)}
+    .nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
+    .nav a{font-weight:700; color:var(--ink)}
+
+    .hero .wrap{padding:96px 0 62px; text-align:center; background:radial-gradient(1100px 540px at 50% -40%, rgba(14,165,233,.16), transparent)}
+    .tag{display:inline-flex; align-items:center; gap:.45rem; padding:7px 12px; border-radius:999px; background:rgba(14,165,233,.10); color:#075985; border:1px solid rgba(14,165,233,.25); font-weight:800}
+    .hero h1{font-size:clamp(2rem,4.2vw,3.2rem); margin:14px 0 8px}
+    .hero p{color:var(--muted); max-width:860px; margin:0 auto}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:14px 18px; border-radius:14px; background:linear-gradient(135deg,var(--brand),#67e8f9); color:#06212a; font-weight:900; border:none; cursor:pointer; box-shadow:var(--shadow)}
+    .btn.ghost{background:transparent; border:2px solid var(--brand); color:var(--dark)}
+
+    section{padding:72px 0}
+    section .head{text-align:center; margin-bottom:22px}
+    section h2{font-size:clamp(1.5rem,2.5vw,2.2rem); margin:0}
+    .muted{color:var(--muted)}
+    .card{background:var(--card); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .pad{padding:22px}
+
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width: 960px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media (max-width: 680px){.grid-3,.grid-2{grid-template-columns:1fr}}
+
+    .gallery{display:grid; gap:14px; grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery .item{border-radius:16px; overflow:hidden; border:1px solid rgba(0,0,0,.08)}
+    .gallery .item img{aspect-ratio: 4 / 3; object-fit:cover}
+    @media(max-width:1100px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.gallery{grid-template-columns:repeat(1,1fr)}}
+
+    footer{padding:32px 0; border-top:1px solid rgba(0,0,0,.08); color:var(--muted); text-align:center}
+
+    .reveal{opacity:0; transform:translateY(18px); transition:all .6s ease}
+    .reveal.show{opacity:1; transform:none}
   </style>
 </head>
 <body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="logo">🌼</span>
+        <span>1DAISY LLC</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <h1>V.E. BATIMENT</h1>
-  <nav>
-    <a href="#about">Présentation</a>
-    <a href="#services">Services</a>
-    <a href="#gallery">Galerie</a>
-    <a href="#contact">Contact</a>
-    <a href="#map">Adresse</a>
-  </nav>
-</header>
+  <section class="hero">
+    <div class="wrap">
+      <div class="container">
+        <span class="tag">Professional • Reliable • Modern</span>
+        <h1>Clean, simple site for your business.</h1>
+        <p>Introduce your company with a minimalist vibe: clear services, a crisp portfolio, and easy ways to reach you.</p>
+        <div class="cta">
+          <a class="btn" href="tel:+17752481547">Call +1 775 248 1547</a>
+          <a class="btn ghost" href="mailto:admin@dezoleswm.shop">Email Us</a>
+          <a class="btn ghost" href="#contact">Get a Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="about">
-  <h2>Présentation</h2>
-  <p>Basée à Les Mureaux, V.E. BATIMENT est une entreprise spécialisée dans la maçonnerie générale et les gros travaux de construction. Grâce à une équipe qualifiée, nous réalisons des chantiers sur mesure en respectant les normes de qualité et de sécurité.</p>
-</section>
+  <section id="services">
+    <div class="container">
+      <div class="head">
+        <h2>Our Services</h2>
+        <p class="muted">Tailor these cards to your niche</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card pad reveal"><h3>Service One</h3><p class="muted">Short description of what you offer.</p></div>
+        <div class="card pad reveal"><h3>Service Two</h3><p class="muted">Add outcomes & deliverables.</p></div>
+        <div class="card pad reveal"><h3>Service Three</h3><p class="muted">Who it helps & timeline.</p></div>
+        <div class="card pad reveal"><h3>Service Four</h3><p class="muted">Optional add‑on or package.</p></div>
+        <div class="card pad reveal"><h3>Consulting</h3><p class="muted">Discovery call & plan.</p></div>
+        <div class="card pad reveal"><h3>Support</h3><p class="muted">Ongoing help & updates.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="services">
-  <h2>Nos Services</h2>
-  <p>Gros œuvre de bâtiment, travaux de maçonnerie, fondations, rénovation structurelle, et accompagnement personnalisé pour tous vos projets de construction.</p>
-</section>
+  <section id="work">
+    <div class="container">
+      <div class="head">
+        <h2>Portfolio</h2>
+        <p class="muted">Add 4–8 of your best shots here</p>
+      </div>
+      <div class="gallery reveal">
+        <div class="item"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Project 1"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1529336953121-a5fa4c74cf03?q=80&w=1200&auto=format&fit=crop" alt="Project 2"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="Project 3"/></div>
+        <div class="item"><img src="https://images.unsplash.com/photo-1507209696998-3c532be9b2b1?q=80&w=1200&auto=format&fit=crop" alt="Project 4"/></div>
+      </div>
+    </div>
+  </section>
 
-<section id="gallery">
-  <h2>Galerie</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1570126681032-3a7c41f13b0d?auto=format&fit=crop&w=800&q=80" alt="chantier 1">
-    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="chantier 2">
-    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80" alt="chantier 3">
-  </div>
-</section>
+  <section id="about">
+    <div class="container">
+      <div class="head"><h2>About Us</h2></div>
+      <div class="grid grid-2">
+        <div class="card pad reveal"><h3>1DAISY LLC</h3><p class="muted">Short bio about your company: what you do, what you value, and how you help customers. Keep it friendly and clear.</p></div>
+        <div class="card pad reveal"><h3>Why Choose Us</h3><p class="muted">Fast responses, simple pricing, and reliable outcomes. Add testimonials later.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="contact">
-  <h2>Contactez-nous</h2>
-  <p>Email : contact@vebatiment.shop</p>
-  <p>Téléphone : +33 6 05 99 64 90</p>
-  <form class="contact-form">
-    <input type="text" placeholder="Nom">
-    <input type="email" placeholder="Email">
-    <textarea placeholder="Votre message"></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
+  <section id="contact">
+    <div class="container">
+      <div class="head">
+        <h2>Contact</h2>
+        <p class="muted">We’ll respond quickly</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card pad reveal">
+          <p><strong>Company:</strong> 1DAISY LLC<br>
+          <strong>Phone:</strong> <a href="tel:+17752481547">+1 775 248 1547</a><br>
+          <strong>Email:</strong> <a href="mailto:admin@dezoleswm.shop">admin@dezoleswm.shop</a></p>
+          <form onsubmit="event.preventDefault(); alert('Thanks! We will contact you shortly.');" style="margin-top:12px">
+            <input aria-label="Your name" required placeholder="Your name" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(0,0,0,.12); margin-bottom:10px" />
+            <input aria-label="Email" type="email" required placeholder="Email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(0,0,0,.12); margin-bottom:10px" />
+            <textarea rows="5" aria-label="Message" required placeholder="How can we help?" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(0,0,0,.12); margin-bottom:10px"></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+        <div class="card pad reveal">
+          <h3 style="margin-top:0">FAQ</h3>
+          <ul style="margin:10px 0 0 18px; color:var(--muted); line-height:1.7">
+            <li>What areas do you serve? — Add your coverage.</li>
+            <li>How do quotes work? — Flat or hourly.</li>
+            <li>Payment options — Add accepted methods.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="map">
-  <h2>Adresse</h2>
-  <p>66 Avenue du Maréchal Foch, 78130 Les Mureaux, France</p>
-  <iframe src="https://www.google.com/maps?q=66+Avenue+du+Mar%C3%A9chal+Foch,+Les+Mureaux,+France&output=embed" allowfullscreen loading="lazy"></iframe>
-</section>
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> 1DAISY LLC. All rights reserved.</p>
+    </div>
+  </footer>
 
-<footer>
-  &copy; 2025 V.E. BATIMENT — Tous droits réservés
-</footer>
-
+  <script>
+    const io = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); }); }, {threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
